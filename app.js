@@ -51,7 +51,7 @@ const register = `
     comodidad de tu casa.
   </p>
   <a
-    href="#"
+    href="https://wa.link/jr94xm"
     role="button"
     target="_blank"
     style="
@@ -67,24 +67,6 @@ const register = `
   "
   >
     CLICK PARA RESERVAR TU CLASE
-  </a>
-  <a
-    href="#"
-    role="button"
-    target="_blank"
-    style="
-      display: block;
-      border-radius: 50px;
-      text-decoration: none;
-      max-width: fit-content;
-      padding: 10px 20px;
-      margin: 20px auto;
-      color: #3d422e;
-      background-color: #aec593;
-      cursor: pointer;
-  "
-  >
-    CONOCE AQUÍ NUESTROS CURSOS
   </a>
   <p style="margin-top: 40px">Nos vemos pronto en el mat.</p>
   <span style="display: block">Con Amor,</span>
