@@ -51,7 +51,7 @@ const register = `
     comodidad de tu casa.
   </p>
   <a
-    href="https://wa.link/jr94xm"
+    href="https://wa.link/2u2mk3"
     role="button"
     target="_blank"
     style="
