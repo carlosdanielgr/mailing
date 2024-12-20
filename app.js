@@ -21,79 +21,29 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const register = `
-<body style="text-align: center; max-width: 700px; margin: 20px auto; font-size: 16px">
-  <div
-    style="
-      font-size: 20px;
-      background-color: #aec59333;
-      color: #999f86;
-      padding: 20px;
-      border-radius: 20px;
-    "
-  >
-    <h1>¡Gracias por registrarte a nuestra Master Class de Yoga!</h1>
-  </div>
-  <p style="margin-top: 30px">¡Hola!</p>
-  <p>
-    Gracias por unirte a nuestra comunidad y registrarte en la Master Class de
-    Yoga integral a la que podrás acceder de forma gratuita. Estoy muy
-    emocionada de compartir esta experiencia contigo. No necesitas experiencia
-    previa, solo tus ganas de disfrutar y conectar con tu cuerpo. Imagina cómo
-    te sentirás al liberar el estrés, ganar flexibilidad y reconectar contigo
-    misma en solo unos minutos al día. ¡Esto es más que ejercicio, es una
-    transformación!
-  </p>
-  <p>
-    Prepárate para disfrutar de una sesión especial diseñada para brindarte
-    paz, bienestar y autoconfianza. Además, después de la clase, podrás
-    inscribirte en nuestros programas online, que puedes seguir desde la
-    comodidad de tu casa.
-  </p>
-  <a
-    href="https://wa.link/2u2mk3"
-    role="button"
-    target="_blank"
-    style="
-      display: block;
-      border-radius: 50px;
-      text-decoration: none;
-      max-width: fit-content;
-      padding: 10px 20px;
-      margin: 20px auto;
-      color: #3d422e;
-      background-color: #f3d573;
-      cursor: pointer;
-  "
-  >
-    CLICK PARA RESERVAR TU CLASE
-  </a>
-  <p style="margin-top: 40px">Nos vemos pronto en el mat.</p>
-  <span style="display: block">Con Amor,</span>
-  <span style="display: block">Mirella Jaramillo </span>
-  <span style="display: block">Yoga Integral & Bienestar</span>
-</body>
-`;
-
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // Puedes especificar un dominio en lugar de '*'
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept",
   );
   next();
 });
 
 // Route to send emails
 app.post("/send-email", async (req, res) => {
-  const { to, subject, type } = req.body;
+  const { email, subject, text } = req.body;
   try {
     // Set up email options
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Sender address
-      to: to, // List of recipients
-      subject: subject, // Subject line
-      html: register, // HTML body (optional)
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject,
+      text,
+      html: `
+        <p>${text}</p>
+        <p><strong>Client email</strong>: ${email}</p>
+      `,
     };
     // Send email
     const info = await transporter.sendMail(mailOptions);
